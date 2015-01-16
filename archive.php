@@ -5,7 +5,7 @@
         </h1>
     </div>
 
-    <?php $categories = get_categories([
+    <?php $categories = get_categories(array(
         'type'         => 'post',
         'child_of'     => 0,
         'parent'       => '',
@@ -18,7 +18,7 @@
         'number'       => '',
         'taxonomy'     => 'category',
         'pad_counts'   => false
-    ]); ?>
+    )); ?>
 
     <div class="col-sm-4">
         <select name="event-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'
@@ -27,7 +27,7 @@
             <?php
             $categories = get_categories();
             foreach ($categories as $category) {
-                $option = '<option value="/category/archives/' . $category->category_nicename . '">';
+                $option = '<option value="' . site_url() . '/category/archives/' . $category->category_nicename . '">';
                 $option .= $category->cat_name;
                 $option .= ' (' . $category->category_count . ')';
                 $option .= '</option>';

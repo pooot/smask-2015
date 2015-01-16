@@ -10,7 +10,7 @@ Template Name: SMASK-tidningen
         </h1>
     </div>
 
-    <?php $categories = get_categories([
+    <?php $categories = get_categories(array(
         'type'         => 'post',
         'child_of'     => 0,
         'parent'       => '',
@@ -23,7 +23,7 @@ Template Name: SMASK-tidningen
         'number'       => '',
         'taxonomy'     => 'category',
         'pad_counts'   => false
-    ]); ?>
+    )); ?>
 
     <div class="col-sm-4">
         <select name="event-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'
@@ -32,7 +32,7 @@ Template Name: SMASK-tidningen
             <?php
             $categories = get_categories();
             foreach ($categories as $category) {
-                $option = '<option value="/category/archives/' . $category->category_nicename . '">';
+                $option = '<option value="' . site_url() . '/category/archives/' . $category->category_nicename . '">';
                 $option .= $category->cat_name;
                 $option .= ' (' . $category->category_count . ')';
                 $option .= '</option>';
@@ -51,7 +51,7 @@ echo $content;
 
 // WP_Query arguments
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$args = [
+$args = array(
     'post_type'              => 'post',
     'post_status'            => 'publish',
     'pagination'             => true,
@@ -60,7 +60,7 @@ $args = [
     'posts_per_archive_page' => '6',
     'order'                  => 'DESC',
     'orderby'                => 'date',
-];
+);
 
 // The Query
 $query = new WP_Query($args);
