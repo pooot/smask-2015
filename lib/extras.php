@@ -51,10 +51,8 @@ function smask_register_meta_boxes($meta_boxes)
 {
     $prefix = 'smask_';
 
-    $meta_boxes = array();
-
     // 1st meta box
-    $meta_boxes = array(
+    $meta_boxes[] = array(
         'id'       => 'facts',
         'title'    => 'Faktaruta',
         'pages'    => array('post'),
@@ -70,7 +68,7 @@ function smask_register_meta_boxes($meta_boxes)
         )
     );
 
-    $meta_boxes = array(
+    $meta_boxes[] = array(
         'id'    => 'images',
         'title' => 'Bilder i högerkolumn',
         'pages'    => array('post'),
@@ -86,7 +84,7 @@ function smask_register_meta_boxes($meta_boxes)
         )
     );
 
-    $meta_boxes = array(
+    $meta_boxes[] = array(
         'id'    => 'byline',
         'title' => 'Byline',
         'pages'    => array('post'),
