@@ -38,7 +38,7 @@ function the_post_thumbnail_caption()
     global $post;
 
     $thumbnail_id = get_post_thumbnail_id($post->ID);
-    $thumbnail_image = get_posts(['p' => $thumbnail_id, 'post_type' => 'attachment']);
+    $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
 
     if ($thumbnail_image && isset($thumbnail_image[0])) {
         echo '<span>' . $thumbnail_image[0]->post_excerpt . '</span>';
@@ -51,47 +51,49 @@ function smask_register_meta_boxes($meta_boxes)
 {
     $prefix = 'smask_';
 
+    $meta_boxes = array();
+
     // 1st meta box
-    $meta_boxes[] = [
+    $meta_boxes = array(
         'id'       => 'facts',
         'title'    => 'Faktaruta',
-        'pages'    => ['post'],
+        'pages'    => array('post'),
         'context'  => 'normal',
         'priority' => 'high',
-        'fields'   => [
-            [
+        'fields'   => array(
+            array(
                 'name'  => 'Text',
                 'id'    => $prefix . 'facts',
                 'type'  => 'wysiwyg',
                 'clone' => false,
-            ],
-        ]
-    ];
+            ),
+        )
+    );
 
-    $meta_boxes[] = [
+    $meta_boxes = array(
         'id'    => 'images',
         'title' => 'Bilder i högerkolumn',
-        'pages' => ['post'],
+        'pages'    => array('post'),
         'context'  => 'normal',
         'priority' => 'high',
-        'fields'   => [
-            [
+        'fields'   => array(
+            array(
                 'name'  => 'Bilder',
                 'id'    => $prefix . 'images',
                 'type'  => 'image_advanced',
                 'clone' => false,
-            ],
-        ]
-    ];
+            ),
+        )
+    );
 
-    $meta_boxes[] = [
+    $meta_boxes = array(
         'id'    => 'byline',
         'title' => 'Byline',
-        'pages' => ['post'],
+        'pages'    => array('post'),
         'context'  => 'normal',
         'priority' => 'high',
-        'fields'   => [
-            [
+        'fields'   => array(
+            array(
                 'name' => 'Byline',
                 'id' => $prefix . 'byline',
                 'type' => 'wysiwyg',
@@ -100,9 +102,9 @@ function smask_register_meta_boxes($meta_boxes)
                     'media_buttons' => false,
                     'textarea_rows' => 3,
                 )
-            ]
-        ]
-    ];
+            )
+        )
+    );
 
     return $meta_boxes;
 }
