@@ -13,26 +13,9 @@
             <?php } ?>
         </header>
         <div class="row">
-            <div class="entry-content">
-                <?php the_content(); ?>
-                <?php if($byline = rwmb_meta( 'smask_byline' )) { ?>
-                <footer>
-                    <time class="updated" datetime="<?php echo get_the_time(); ?>">Publicerad: <?php echo get_the_date(); ?></time>
-                    <p class="byline author vcard">
-                        <?php echo $byline; ?>
-                    </p>
-                </footer>
-                <?php } ?>
-            </div>
             <div class="entry-extra">
-                <?php if($facts = rwmb_meta( 'smask_facts')) { ?>
-                <h3>Fakta</h3>
-                <?php
-                    echo $facts;
-                } ?>
-
                 <?php if($images = rwmb_meta( 'smask_images', array('type' => 'image') )) { ?>
-                    <h3>Bilder</h3>
+                <section>
                     <div class="row">
                         <?php foreach($images as $image) { ?>
                             <div class="col-xs-6">
@@ -42,6 +25,24 @@
                             </div>
                         <?php } ?>
                     </div>
+                </section>
+                <?php } ?>
+                <?php if($facts = rwmb_meta( 'smask_facts')) { ?>
+                    <section>
+                        <h3>Fakta</h3>
+                        <?php echo $facts; ?>
+                    </section>
+                <?php } ?>
+            </div>
+            <div class="entry-content">
+                <?php the_content(); ?>
+                <?php if($byline = rwmb_meta( 'smask_byline' )) { ?>
+                <footer>
+                    <time class="updated" datetime="<?php echo get_the_time(); ?>">Publicerad: <?php echo get_the_date(); ?></time>
+                    <p class="byline author vcard">
+                        <?php echo $byline; ?>
+                    </p>
+                </footer>
                 <?php } ?>
             </div>
         </div>

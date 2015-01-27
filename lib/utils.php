@@ -28,3 +28,14 @@ function roots_body_class($classes) {
   return $classes;
 }
 add_filter('body_class', 'roots_body_class');
+
+//Get Featured Image URL
+function wp_get_thumbnail_url($id, $size){
+	if(has_post_thumbnail($id)){
+		$imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $size );
+		$imgURL = $imgArray[0];
+		return $imgURL;
+	}else{
+		return false;
+	}
+}
